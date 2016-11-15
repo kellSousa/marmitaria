@@ -17,7 +17,7 @@ Route::get('/', function () {
 	Route::get('/home', 'HomeController@index');
 	Route::get('/negado', 'HomeController@negado');
 
-	Route::group(['middleware' => ['auth', 'admin']], function(){
+	Route::group(['middleware' => ['auth']], function(){
 
 		Route::get('/cliente'					, 'ClienteController@index');
 		Route::post('/cliente'					, 'ClienteController@index');
