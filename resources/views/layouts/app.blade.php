@@ -1,35 +1,41 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @kellSousa
+ Unwatch 1
+  Star 0
+  Fork 0 kellSousa/a
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Tree: e0f4f43918 Find file Copy patha/resources/views/layouts/app.blade.php
+da5f382  18 hours ago
+@kellSousa kellSousa first commit
+1 contributor
+RawBlameHistory     
+83 lines (70 sloc)  3.51 KB
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--  =AJX=  -->
-    <script src="{!! asset('js/jquery.min.js') !!}"></script>
-    <!--  =JS=  -->
-    <script src="{!! asset('js/jquery-1.10.2.js') !!}"></script>
-    <script src="{!! asset('js/jquery-ui.js') !!}"></script>
-
-    <!-- Fonts -->
-    <link href="{!! asset('css/font-awesome4-5.min.css') !!}" rel='stylesheet' type='text/css'>
-   
-    <link rel="stylesheet" href="{!! asset('css/jquery-ui.css') !!}">
 
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{!! asset('css/jquery-ui.css') !!}" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="{!! asset('css/css.css') !!}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{!! asset('css/bootstrap.min.css') !!}" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
         body {
             font-family: 'Lato';
         }
-
         .fa-btn {
             margin-right: 6px;
         }
@@ -49,27 +55,24 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    Marmitaria
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Laravel
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/register') }}">Registrar</a></li>
                         <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        @if(Auth::user()->nivelusuario_id == '1')
-                        <li><a href="{{ url('/produto') }}">Produto</a></li>
-                        <li><a href="{{ url('/empresa') }}">Empresa</a></li>
-                        <li><a href="{{ url('/entregador') }}">Entregador</a></li>
-                        @endif
-                        <li><a href="{{ url('/cliente') }}">Cliente</a></li>
-                        <li><a href="{{ url('/pedido') }}">Pedido</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -87,26 +90,11 @@
 
     @yield('content')
 
-    
     <!-- JavaScripts -->
-    <!-- Redirect ^ -->
-    <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
-    <script src="{!! asset('js/mascaramento.js') !!}"></script>
-    <script src="{!! asset('js/jquery.maskMoney.min.js') !!}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('.cpf').mask('000.000.000-00', {placeholder: "000.000.000-00"}, {reverse: true});
-    $('.cnpj').mask('00.000.000/0000-00', {placeholder: "00.000.000/0000-00"}, {reverse: true});
-    $('.data').mask("00/00/0000", {placeholder: "__/__/____"});
-    $('.cep').mask('00.000-000', {placeholder: "00.000-000"});
-    $('.telefoneFixo').mask("(00) 0000-0000",{placeholder:"(00) 0000-0000"});
-    $('.celular').mask("(00) 00000-0000",{placeholder:"(00) 00000-0000"});
-    $('.hora').mask("00:00h", {placeholder:"00:00"});
-    $('.numero').mask('0#');
-    $('.valor').maskMoney({symbol:'R$ ', showSymbol:true, thousands:'', decimal:'.', symbolStay: true});
-  
-  });
-  </script>
-  </body>
+</body>
 </html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
