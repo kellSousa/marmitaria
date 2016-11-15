@@ -38,6 +38,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('nivelusuario_id') ? ' has-error' : '' }}">
+                            <label for="nivelusuario_id" class="col-md-4 control-label">Cargo</label>
+
+                            <div class="col-md-6">
+                            <select id="nivelusuario_id"  class="form-control" name="nivelusuario_id" value="{{ old('nivelusuario_id') }}" required autofocus>
+                                <option value="0">Selecione um cargo</option>
+                            @foreach ($cargos as $cargo)
+                                <option value='{{$cargo->id}}'>{{$cargo->nome}}</option>
+                            @endforeach
+                            </select>
+                             
+                                @if ($errors->has('nivelusuario_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nivelusuario_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
