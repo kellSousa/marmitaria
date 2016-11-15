@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','nivelusuario_id'
     ];
 
     /**
@@ -23,4 +23,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function nivelusuario()
+    {
+        return $this->belongsTo('App\NivelUsuario', 'nivelusuario_id' , 'id');
+    }
+    
 }
