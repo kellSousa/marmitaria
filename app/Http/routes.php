@@ -19,22 +19,22 @@ Route::get('/', function () {
 
 	Route::group(['middleware' => ['auth']], function(){
 
-		Route::get('/cliente'					, 'ClienteController@index');
-		Route::post('/cliente'					, 'ClienteController@index');
-		Route::get('/cliente/create'			, 'ClienteController@create');
-		Route::get('/cliente/edit/{id}'			, 'ClienteController@edit');
-		Route::get('/cliente/show/{id}'			, 'ClienteController@show');
-		Route::get('/cliente/addPedido/{id}'	, 'ClienteController@addPedido');
-		Route::post('/cliente/delete/{id}'		, 'ClienteController@delete');
-		Route::post('/cliente/create'			, 'ClienteController@store');
-		Route::post('/cliente/edit/{id}'		, 'ClienteController@update');
+		Route::get('/cliente'			, 'ClienteController@index');
+		Route::post('/cliente'			, 'ClienteController@index');
+		Route::get('/cliente/create'	, 'ClienteController@create');
+		Route::post('/cliente/edit'		, 'ClienteController@edit');
+		Route::post('/cliente/show'		, 'ClienteController@show');
+		Route::post('/cliente/addPedido', 'ClienteController@addPedido');
+		Route::post('/cliente/delete'	, 'ClienteController@delete');
+		Route::post('/cliente/create'	, 'ClienteController@store');
+		Route::post('/cliente/editado'	, 'ClienteController@update');
 
 		Route::get('/pedido'					, 'PedidoController@index');
 		Route::post('/pedido'					, 'PedidoController@index');
 		Route::get('/pedido/selCliente'			, 'PedidoController@selCliente');
 		Route::get('/pedido/addCliente'			, 'PedidoController@addCliente');
 		Route::post('/pedido/addCliente'		, 'ClienteController@store');
-		Route::get('/pedido/create/{id}'		, 'PedidoController@create');
+		Route::post('/pedido/create'		, 'PedidoController@create');
 		Route::get('/pedido/edit/{id}'			, 'PedidoController@edit');
 		Route::get('/pedido/show/{id}'			, 'PedidoController@show');
 		Route::get('/pedido/addPedido/{id}'		, 'PedidoController@addPedido');
@@ -47,32 +47,32 @@ Route::get('/', function () {
 
 	Route::group(['middleware' => ['auth', 'admin']], function(){
 
-		Route::get('/empresa'					, 'EmpresaController@index');
-		Route::post('/empresa'					, 'EmpresaController@index');
-		Route::get('/empresa/create'			, 'EmpresaController@create');
-		Route::get('/empresa/edit/{id}'			, 'EmpresaController@edit');
-		Route::get('/empresa/show/{id}'			, 'EmpresaController@show');
-		Route::post('/empresa/delete/{id}'		, 'EmpresaController@delete');
-		Route::get('/empresa/addEntregador/{id}', 'EmpresaController@addEntregador');
-		Route::post('/empresa/create'			, 'EmpresaController@store');
-		Route::post('/empresa/edit/{id}'		, 'EmpresaController@update');
+		Route::get('/empresa'				, 'EmpresaController@index');
+		Route::post('/empresa'				, 'EmpresaController@index');
+		Route::get('/empresa/create'		, 'EmpresaController@create');
+		Route::post('/empresa/edit'			, 'EmpresaController@edit');
+		Route::post('/empresa/show'			, 'EmpresaController@show');
+		Route::post('/empresa/delete'		, 'EmpresaController@delete');
+		Route::post('/empresa/addEntregador', 'EmpresaController@addEntregador');
+		Route::post('/empresa/create'		, 'EmpresaController@store');
+		Route::post('/empresa/editado'		, 'EmpresaController@update');
 
-		Route::get('/entregador'					, 'EntregadorController@index');
-		Route::post('/entregador'					, 'EntregadorController@index');
-		Route::get('/entregador/create/{id}'	    , 'EntregadorController@create');
-		Route::get('/entregador/edit/{id}'			, 'EntregadorController@edit');
-		Route::get('/entregador/show/{id}'			, 'EntregadorController@show');
-		Route::post('/entregador/delete/{id}'		, 'EntregadorController@delete');
-		Route::post('/entregador/create/{id}'		, 'EntregadorController@store');
-		Route::post('/entregador/edit/{id}'		    , 'EntregadorController@update');
+		Route::get('/entregador'			, 'EntregadorController@index');
+		Route::post('/entregador'			, 'EntregadorController@index');
+		Route::get('/entregador/create'	    , 'EntregadorController@create');
+		Route::post('/entregador/edit'		, 'EntregadorController@edit');
+		Route::post('/entregador/show'		, 'EntregadorController@show');
+		Route::post('/entregador/delete'	, 'EntregadorController@delete');
+		Route::post('/entregador/create'	, 'EntregadorController@store');
+		Route::post('/entregador/editado'	, 'EntregadorController@update');
 
-		Route::get('/produto'					, 'ProdutoController@index');
-		Route::post('/produto'					, 'ProdutoController@index');
-		Route::get('/produto/create'			, 'ProdutoController@create');
-		Route::get('/produto/edit/{id}'			, 'ProdutoController@edit');
-		Route::get('/produto/show/{id}'			, 'ProdutoController@show');
-		Route::post('/produto/delete/{id}'		, 'ProdutoController@delete');
-		Route::post('/produto/create'			, 'ProdutoController@store');
-		Route::post('/produto/edit/{id}'		, 'ProdutoController@update');
+		Route::get('/produto'				, 'ProdutoController@index');
+		Route::post('/produto'				, 'ProdutoController@index');
+		Route::get('/produto/create'		, 'ProdutoController@create');
+		Route::post('/produto/edit'			, 'ProdutoController@edit');
+		Route::post('/produto/show'			, 'ProdutoController@show');
+		Route::post('/produto/delete'		, 'ProdutoController@delete');
+		Route::post('/produto/create'		, 'ProdutoController@store');
+		Route::post('/produto/editado'		, 'ProdutoController@update');
 
 });

@@ -46,13 +46,22 @@
             <td>{{$produto->custo}} </td>
             <td>            
             <div>
-            <!--Botoes-->             
-            <form method = "POST"  action="{{url('/produto/delete' , $produto->id )}}"  style="display:inline">
+            <!--Botoes-->  
+            <form method = "POST"  action="{{url('/produto/show')}}"  style="display:inline">
                 {{ csrf_field() }}
-                <a class="btn" href="{{url('/produto/show' , $produto->id  )}}"> Detalhes </a>
-                <a class="btn" href="{{url('/produto/edit' , $produto->id  )}}"> Alterar </a>
-                <input class="confirm" type="submit" onclick="clicked(event)" value="Deletar" />
-            </form>                
+                <input type="hidden" name="produto" value="{{$produto->id}}">
+                <input class="confirm" type="submit" value="Detalhes" "/>
+            </form>   
+            <form method = "POST"  action="{{url('/produto/edit')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="produto" value="{{$produto->id}}">
+                <input class="confirm" type="submit" value="Alterar"/>
+            </form>   
+            <form method = "POST"  action="{{url('/produto/delete')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="produto" value="{{$produto->id}}">
+                <input class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>
+            </form>                 
             </div> 
             </td>
         </tr>

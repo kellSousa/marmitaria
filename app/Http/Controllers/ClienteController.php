@@ -29,6 +29,8 @@ class ClienteController extends Controller
         }
         if(isset($var)){                       
             $clientes = $var;
+        }else{
+            $clientes = [];
         }
         return view('cliente.index' , ['clientes' => $clientes]);
     }
@@ -63,28 +65,28 @@ class ClienteController extends Controller
         }                            
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($request->cliente);
         return view('cliente.show' , ['cliente' => $cliente]);
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::find($request->cliente);
         return view('cliente.edit' , ['cliente' => $cliente]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request,[
             'nome'              =>  'required|min:5',
-            'telefone'          =>  'required|dddcelular|unique:cliente,telefone,'.$request->id,
+            'telefone'          =>  'required|dddcelular|unique:cliente,telefone,'.$request->cliente,
             'endereco'          =>  'required|min:5',
             'pontoReferencia'   =>  'required|min:5',
             'dtNasc'            =>  'required|date2',
         ]);
-        $cliente =  Cliente::find($id);
+        $cliente =  Cliente::find($request->cliente);
         $cliente->nome              = $request['nome'];
         $cliente->telefone          = $request['telefone'];
         $cliente->endereco          = $request['endereco'];
@@ -93,12 +95,12 @@ class ClienteController extends Controller
         $cliente->save();
 
         return Redirect::to('cliente')
-                            ->with('success' , 'Cliente cadastrado com sucesso');
+                            ->with('success' , 'Cliente alterado com sucesso');
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $cliente =  Cliente::find($id);
+        $cliente =  Cliente::find($request->cliente);
         //se tiver algum pedido pendente para esse cliente, ele n pode ser desativado
         if($cliente->pedido()){             
             foreach ($cliente->pedido()->get() as $pedido) {

@@ -17,7 +17,7 @@
 
 <br>
 
-<a class="btn" href="{{url('/entregador/create/0')}}"> Add Entregador </a>
+<a class="btn" href="{{url('/entregador/create')}}"> Add Entregador </a>
 
     @if ($message = Session::get('erro'))
         <div class="alertr">
@@ -44,13 +44,23 @@
             <td>{{$entregador->celular}} </td>
             <td>            
             <div>
-            <!--Botoes-->             
-            <form method = "POST"  action="{{url('/entregador/delete' , $entregador->id )}}"  style="display:inline">
+            <!--Botoes-->    
+            <form method = "POST"  action="{{url('/entregador/show')}}"  style="display:inline">
                 {{ csrf_field() }}
-                <a class="btn" href="{{url('/entregador/show' , $entregador->id  )}}"> Detalhes </a>
-                <a class="btn" href="{{url('/entregador/edit' , $entregador->id  )}}"> Alterar </a>
-                <input class="confirm" type="submit" onclick="clicked(event)" value="Deletar" />
-            </form>                
+                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                <input class="confirm" type="submit" value="Detalhes" />
+            </form>  
+            <form method = "POST"  action="{{url('/entregador/edit')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                <input class="confirm" type="submit" value="Alterar" />
+            </form>  
+            <form method = "POST"  action="{{url('/entregador/delete')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                <input class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>
+            </form>  
+
             </div> 
             </td>
         </tr>

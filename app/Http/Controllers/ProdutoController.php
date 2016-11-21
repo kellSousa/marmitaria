@@ -58,28 +58,28 @@ class ProdutoController extends Controller
                             ->with('success' , 'Produto cadastrado com sucesso');
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        $produto = Produto::find($id);
+        $produto = Produto::find($request->produto);
         return view('produto.show' , ['produto' => $produto]);
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $produto  = Produto::find($id);
+        $produto  = Produto::find($request->produto);
         $tamanhos = TamanhoProduto::where('id' , '!=', $produto->tamanhoProduto_id)->get();
         return view('produto.edit' , ['produto' => $produto , 'tamanhos' => $tamanhos]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request,[
-            'nome'       => 'required|min:5|unique:produto,nome,'.$request->id,
+            'nome'      => 'required|min:5|unique:produto,nome,'.$request->produto,
             'descricao' =>  'required|min:10',
             'tamanho'   =>  'required|not_in:0',
             'valor'     =>  'required|max:6',
         ]);
-        $produto = Produto::find($id);
+        $produto = Produto::find($request->produto);
         $produto->nome              = $request['nome'];
         $produto->descricao         = $request['descricao'];
         $produto->tamanhoProduto_id = $request['tamanho'];
@@ -89,9 +89,9 @@ class ProdutoController extends Controller
         return Redirect::to('produto');
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $produto = Produto::find($id);
+        $produto = Produto::find($request->produto);
          //se tiver algum pedido pendente para esse produto, ele n pode ser desativado
         if($produto->pedidoProduto()->get()){ 
         
