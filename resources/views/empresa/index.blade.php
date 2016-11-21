@@ -42,13 +42,26 @@
             <td>{{$empresa->telefone}} </td>
             <td>            
             <div>
-            <!--Botoes-->             
-            <form method = "POST"  action="{{url('/empresa/delete' , $empresa->id )}}"  style="display:inline">
+            <!--Botoes-->     
+            <form method = "POST"  action="{{url('/empresa/show')}}"  style="display:inline">
                 {{ csrf_field() }}
-                <a class="btn" href="{{url('/empresa/show' , $empresa->id  )}}"> Detalhes </a>
-                <a class="btn" href="{{url('/empresa/edit' , $empresa->id  )}}"> Alterar </a>
-                <a class="btn" href="{{url('/empresa/addEntregador' , $empresa->id )}}">Add Entregador</a>
-                <input class="confirm" type="submit" onclick="clicked(event)" value="Deletar" />
+                <input type="hidden" name="empresa" value="{{$empresa->id}}">
+                <input class="confirm" type="submit" value="Detalhes" />
+            </form>  
+            <form method = "POST"  action="{{url('/empresa/edit')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="empresa" value="{{$empresa->id}}">
+                <input class="confirm" type="submit" value="Alterar" />
+            </form>  
+            <form method = "POST"  action="{{url('/empresa/addEntregador')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="empresa" value="{{$empresa->id}}">
+                <input class="confirm" type="submit" value="Add Entregador" />
+            </form>  
+            <form method = "POST"  action="{{url('/empresa/delete')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="empresa" value="{{$empresa->id}}">
+                <input class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>
             </form>                
             </div> 
             </td>

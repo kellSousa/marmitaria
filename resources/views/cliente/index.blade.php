@@ -50,12 +50,25 @@
             <td>            
             <div>
             <!--Botoes-->             
-            <form method = "POST"  action="{{url('/cliente/delete' , $cliente->id )}}"  style="display:inline">
+            <form method = "POST"  action="{{url('/cliente/show')}}"  style="display:inline">
                 {{ csrf_field() }}
-                <a class="btn" href="{{url('/cliente/show' , $cliente->id  )}}"> Detalhes </a>
-                <a class="btn" href="{{url('/cliente/edit' , $cliente->id  )}}"> Alterar </a>
+                <input type="hidden" name="cliente" value="{{$cliente->id}}">
+                <input class="confirm" type="submit" value="Detalhes"  />
+            </form> 
+            <form method = "POST"  action="{{url('/cliente/edit')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="cliente" value="{{$cliente->id}}">
+                <input class="confirm" type="submit" value="Alterar" />
+            </form> 
+            <form method = "POST"  action="{{url('/cliente/delete')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="cliente" value="{{$cliente->id}}">
                 <input class="confirm" type="submit" onclick="clicked(event)" value="Deletar" />
-                <a class="btn" href="{{url('/pedido/create' , $cliente->id )}}"> Add pedido </a>
+            </form> 
+            <form method = "POST"  action="{{url('/pedido/create')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="cliente" value="{{$cliente->id}}">
+                <input class="confirm" type="submit" value="Add pedido "  onclick="clicked(event)" />
             </form>                
             </div> 
             </td>

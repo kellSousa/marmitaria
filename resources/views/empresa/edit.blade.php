@@ -4,8 +4,9 @@
 <h2>Empresa</h2>
 <br><br>
 <div class="container">
-    <form class="form-inline" role="form" method="post" id="auto" action="" >
+    <form class="form-inline" role="form" method="post" id="auto" action="/empresa/editado" >
     {{ csrf_field() }}
+    <input type="hidden" name="empresa" value="{{$empresa->id}}">
         <!--Dados a serem inseridos-->
         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
             <label for="nome" class="col-md-4 control-label">Nome</label>

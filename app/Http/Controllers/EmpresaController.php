@@ -30,6 +30,8 @@ class EmpresaController extends Controller
         }
         if(isset($var)){                       
             $empresas = $var;
+        }else{
+            $empresas = [];
         }
         return view('empresa.index' , ['empresas' => $empresas]);       
     }
@@ -60,34 +62,34 @@ class EmpresaController extends Controller
                         ->with('success','Empresa cadastrado com sucesso');
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        $empresa = Empresa::find($id);
+        $empresa = Empresa::find($request->empresa);
         return view('empresa.show' , ['empresa' => $empresa]);
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $empresa = Empresa::find($id);
+        $empresa = Empresa::find($request->empresa);
         return view('empresa.edit' , ['empresa' => $empresa]);
     }
 
-    public function addEntregador($id){
-
-       //return redirect()->route('/entregador/create', ['id' => $id]);
-        return Redirect::to('entregador/create/'.$id);
+    public function addEntregador(Request $request)
+    {
+        $empresas = Empresa::find($request->empresa)->get();
+        return view('entregador.create' , ['empresas' => $empresas]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $this->validate($request, [
                 'nome'     => 'required|min:5',
-                'cnpj'     => 'required|cnpj|unique:empresa,cnpj,'.$request->id,
+                'cnpj'     => 'required|cnpj|unique:empresa,cnpj,'.$request->empresa,
                 'endereco' => 'required',
                 'telefone' => 'required|dddtelefone',
-                'email'    => 'required|email|unique:empresa,email,'.$request->id,
+                'email'    => 'required|email|unique:empresa,email,'.$request->empresa,
             ]);
-        $empresa = Empresa::find($id);
+        $empresa = Empresa::find($request->empresa);
         $empresa->nome      = $request['nome'];
         $empresa->cnpj      = $request['cnpj'];
         $empresa->endereco  = $request['endereco'];
@@ -98,9 +100,9 @@ class EmpresaController extends Controller
                         ->with('success','Empresa alterada com sucesso');
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $empresa = Empresa::find($id);       
+        $empresa = Empresa::find($request->empresa);       
         if($empresa->entregador()){             
             foreach ($empresa->entregador()->get() as $entregador) {
                 if($entregador->ativo == '1'){
@@ -113,7 +115,7 @@ class EmpresaController extends Controller
             return Redirect::to('empresa')
                         ->with('erro' , 'A empresa '.$empresa->nome.' não pode der deletada, pois existem entregadores ativos vinculados a ela: '.$entregadores);
         }           
-        $empresa->ativo     = 0;
+        $empresa->ativo  = '0';
         $empresa->save();
         return Redirect::to('empresa')
                         ->with('success' , 'A empresa '.$empresa->nome.' foi deletada com sucesso.');

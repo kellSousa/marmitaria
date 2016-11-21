@@ -42,9 +42,9 @@ class PedidoController extends Controller
         return view('cliente.create' ,['pedido' => $pedido]);
     }
 
-    public function create($idCliente)
+    public function create(Request $request)
     {
-        $cliente = Cliente::find($idCliente);
+        $cliente = Cliente::find($request->cliente);
         $entregadores = Entregador::where('ativo' , '=' , '1')->get();
         $produtos = Produto::where('ativo' , '=' , '1')->get();
         return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => $entregadores , 'produtos' => $produtos]);

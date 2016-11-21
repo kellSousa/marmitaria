@@ -46,7 +46,11 @@
         </div>
 
         <div class="form-group">           
-               <a class="btn" href="{{url('/entregador/edit' , $entregador->id  )}}"> Alterar </a> 
+               <form method = "POST"  action="{{url('/entregador/edit')}}"  style="display:inline">
+                {{ csrf_field() }}
+                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                <input class="confirm" type="submit" value="Alterar" />
+            </form> 
         </div>
 </div>
 @endsection
