@@ -52,6 +52,7 @@ class ProdutoController extends Controller
         $produto->descricao         = $request['descricao'];
         $produto->tamanhoProduto_id = $request['tamanho'];
         $produto->custo             = $request['valor'];
+        $produto->valorItem         = $request['valor'];
         $produto->save();
 
         return Redirect::to('produto')
@@ -74,7 +75,7 @@ class ProdutoController extends Controller
     public function update(Request $request)
     {
         $this->validate($request,[
-            'nome'      => 'required|min:5|unique:produto,nome,'.$request->produto,
+            'nome'      =>  'required|min:5|unique:produto,nome,'.$request->produto,
             'descricao' =>  'required|min:10',
             'tamanho'   =>  'required|not_in:0',
             'valor'     =>  'required|max:6',

@@ -49,24 +49,19 @@
             <td>{{$pedido->entregador->nome}}</td>
             <td>            
             <div>
-            <!--Botoes-->             
-            <form method = "POST"  action="{{url('/pedido/delete' , $pedido->id )}}"  style="display:inline">
+            <!--Botoes-->
+            <form method = "POST"  action="{{url('/pedido/show')}}"  style="display:inline">
                 {{ csrf_field() }}
-                <a class="btn" href="{{url('/pedido/show' , $pedido->id  )}}"> Detalhes </a>
-                <a class="btn" href="{{url('/pedido/edit' , $pedido->id  )}}"> Alterar </a>
-                <input class="confirm" type="submit" onclick="clicked(event)" value="Deletar" />
-            </form>
+                <input type="hidden" name="pedido" value="{{$pedido->id}}">
+                <input class="confirm" type="submit" value="Detalhes" "/>
+            </form>  
             <!--fim dos botoes-->                
             </div> 
             </td>
         </tr>
         @endforeach
     </tbody>
+
 </table>
 </div>
 @endsection
-<script>
-    function clicked(e) {
-        if(!confirm('Deseja cancelar este pedido?'))e.preventDefault();
-    }
-</script>

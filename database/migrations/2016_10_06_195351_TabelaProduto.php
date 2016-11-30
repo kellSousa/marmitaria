@@ -18,7 +18,7 @@ class TabelaProduto extends Migration
             $table->string('descricao');
             $table->integer('tamanhoProduto_id')->unsigned();
             $table->foreign('tamanhoProduto_id')->references('id')->on('tamanhoProduto');
-$table->float('custo', 6 , 2);
+            $table->float('custo', 6 , 2);
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });

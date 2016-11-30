@@ -24,23 +24,24 @@ Route::get('/', function () {
 		Route::get('/cliente/create'	, 'ClienteController@create');
 		Route::post('/cliente/edit'		, 'ClienteController@edit');
 		Route::post('/cliente/show'		, 'ClienteController@show');
-		Route::post('/cliente/addPedido', 'ClienteController@addPedido');
 		Route::post('/cliente/delete'	, 'ClienteController@delete');
 		Route::post('/cliente/create'	, 'ClienteController@store');
 		Route::post('/cliente/editado'	, 'ClienteController@update');
 
-		Route::get('/pedido'					, 'PedidoController@index');
-		Route::post('/pedido'					, 'PedidoController@index');
-		Route::get('/pedido/selCliente'			, 'PedidoController@selCliente');
-		Route::get('/pedido/addCliente'			, 'PedidoController@addCliente');
-		Route::post('/pedido/addCliente'		, 'ClienteController@store');
+		Route::get('/pedido'				, 'PedidoController@index');
+		Route::post('/pedido'				, 'PedidoController@index');
+		Route::get('/pedido/selCliente'		, 'PedidoController@selCliente');
+		Route::get('/pedido/addCliente'	, 'PedidoController@addCliente');
+		Route::post('/pedido/addCliente'	, 'ClienteController@store');
 		Route::post('/pedido/create'		, 'PedidoController@create');
-		Route::get('/pedido/edit/{id}'			, 'PedidoController@edit');
-		Route::get('/pedido/show/{id}'			, 'PedidoController@show');
-		Route::get('/pedido/addPedido/{id}'		, 'PedidoController@addPedido');
-		Route::post('/pedido/delete/{id}'		, 'PedidoController@delete');
-		Route::post('/pedido/create/{id}'			, 'PedidoController@store');
-		Route::post('/pedido/edit/{id}'			, 'PedidoController@update');
+		Route::post('/pedido/edit'			, 'PedidoController@edit');
+		Route::post('/pedido/show'			, 'PedidoController@show');
+		Route::get('/pedido/addPedido'		, 'PedidoController@addPedido');
+		Route::post('/pedido/delete'		, 'PedidoController@delete');
+		Route::post('/pedido/criado'		, 'PedidoController@store');
+		Route::post('/pedido/altualizado'	, 'PedidoController@atualizaValores');
+		Route::post('/pedido/finalizado'	, 'PedidoController@finalizar');
+		Route::post('/pedido/editado'		, 'PedidoController@update');
 
 		
 	});

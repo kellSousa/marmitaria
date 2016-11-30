@@ -68,7 +68,7 @@
             <form method = "POST"  action="{{url('/pedido/create')}}"  style="display:inline">
                 {{ csrf_field() }}
                 <input type="hidden" name="cliente" value="{{$cliente->id}}">
-                <input class="confirm" type="submit" value="Add pedido "  onclick="clicked(event)" />
+                <input class="confirm" type="submit" value="Add pedido " />
             </form>                
             </div> 
             </td>
