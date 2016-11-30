@@ -7,6 +7,8 @@ use App\Http\Requests;
 use Redirect;
 use Auth;
 use App\Cliente;
+use App\Entregador;
+use App\Produto;
 
 class ClienteController extends Controller
 {
@@ -58,7 +60,9 @@ class ClienteController extends Controller
         $cliente->save();
 
         if($request['pedido'] == '1'){
-            return Redirect::to('pedido/create/'.$cliente->id);
+            $entregadores = Entregador::where('ativo' , '=' , '1')->get();
+            $produtos = Produto::where('ativo' , '=' , '1')->get();
+            return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => $entregadores , 'produtos' => $produtos]);
         }else{
             return Redirect::to('cliente')
                             ->with('success' , 'Cliente cadastrado com sucesso');

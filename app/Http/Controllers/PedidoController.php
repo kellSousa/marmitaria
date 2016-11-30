@@ -23,8 +23,7 @@ class PedidoController extends Controller
     {
         $pedidos = Pedido::orderBy('created_at','ASC')
                             ->where('ativo' , '=' , '1')
-                            ->get();
-       
+                            ->get();  
         return view('pedido.index' , ['pedidos' => $pedidos]);
     }
 
@@ -44,56 +43,93 @@ class PedidoController extends Controller
 
     public function create(Request $request)
     {
-        $cliente = Cliente::find($request->cliente);
-        $entregadores = Entregador::where('ativo' , '=' , '1')->get();
-        $produtos = Produto::where('ativo' , '=' , '1')->get();
-        return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => $entregadores , 'produtos' => $produtos]);
-    
+        $cliente        = Cliente::find($request->cliente);
+        $entregadores   = Entregador::where('ativo' , '=' , '1')->get();
+        $produtos       = Produto::where('ativo' , '=' , '1')->get();
+        return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => $entregadores , 'produtos' => $produtos]);    
     }
 
     public function store(Request $request)
-    {
+    { 
         $this->validate($request,[
-            'cliente' =>'required',
+            'cliente'    =>'required',
             'entregador' =>'required|not_in:0'
-            ]);
-      
+        ]);      
+
         $pedido = new Pedido();
         $pedido->ativo          = 0;
         $pedido->status_id      = 1;
         $pedido->cliente_id     = $request['clienteid'];
-        $pedido->Entregador_id  = $request['entregador'];
+        $pedido->entregador_id  = $request['entregador'];
         $pedido->save();
 
         foreach ($request["produtos"] as $campo => $valor) { 
-            $pedidoProduto = new PedidoProduto();
+            $produtoSel    = Produto::find($valor);
+            $pedidoProduto = new PedidoProduto();   
             $pedidoProduto->pedido_id   = $pedido->id;
             $pedidoProduto->produto_id  = $valor;
+            $pedidoProduto->valorItem   = $produtoSel->custo;
             $pedidoProduto->save();
-        }
-        $pedido->ativo          = 1;
+        }       
+        return view('pedido.resumoPedido' ,['pedido' => $pedido]);        
+    }
+
+    public function atualizaValores(Request $request)
+    { 
+        $pedidoProduto  = PedidoProduto::find($request['item']); 
+        $pedido         = Pedido::find($pedidoProduto->pedido_id);
+        $valorItem      = $pedidoProduto->produto->custo * $request['quantidade'];
+        $pedidoProduto->qtd       = $request['quantidade'];
+        $pedidoProduto->valorItem = $valorItem;
+        $pedidoProduto->save();
+
+        return view('pedido.resumoPedido' ,['pedido' =>  $pedido]);
+    }
+
+    public function finalizar(Request $request){ 
+       
+        $pedido         = Pedido::find($request['pedido']);
+        $pedido->ativo  = 1;
         $pedido->save();
-        //die('fim');
-        return Redirect::to('pedido')
-                            ->with('success' , 'Produto cadastrado com sucesso');
-        
+
+        $pedidos = Pedido::orderBy('created_at','ASC')
+                            ->where('ativo' , '=' , '1')
+                            ->get();
+         $status =   Status::all();                            
+
+        echo "<script>alert('Pedido cadastrado com sucesso.');</script>";
+        return view('pedido.index' ,['pedidos' =>  $pedidos , 'status' => $status]);
     }
 
-
-    public function show($id)
+    public function show(Request $request)
     {
-        $pedido = Pedido::find($id);   
+        $pedido  =   Pedido::find($request['pedido']);  
+        if($pedido->status_id == '1'){
+            $status  =  Status::where('id','!=',$pedido->status_id);   
+        }     
+        return view('pedido.show' ,['pedido' =>  $pedido , 'status' => $status]);
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $pedido  = Pedido::find($id);
+        $pedido  = Pedido::find($request['pedido']);
         $statuss = Status::where('id' , '!=' , $pedido->status_id);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $pedido = Pedido::find($id);   
+        die($request);
+        $pedido  = Pedido::find($request['pedido']);
+        $statuss = Status::where('id' , '!=' , $pedido->status_id);
+        $pedido->status_id =  $request['statusPedido'];
+        $pedido->save();
+
+        $pedidos = Pedido::orderBy('created_at','ASC')
+                            ->where('ativo' , '=' , '1')
+                            ->get();        
+        echo "<script>alert('Pedido alterado com sucesso.');</script>";
+        return view('pedido.index' ,['pedidos' =>  $pedidos]);
+
     }
 
     public function destroy($id)
@@ -108,4 +144,7 @@ class PedidoController extends Controller
         return Redirect::to('pedido')
                         ->with('erro' , 'O pedido está com status '.$pedido->status->nome);       
     }
+
+
+
 }

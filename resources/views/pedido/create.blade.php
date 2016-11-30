@@ -4,7 +4,7 @@
 <div class="container">
 <h2>Pedido</h2>
 <br><br>
-    <form class="form-inline" role="form" method="post" id="auto" action="" >
+    <form class="form-inline" role="form" method="post" id="auto" action="/pedido/criado" >
     {{ csrf_field() }}
         <!--Dados a serem inseridos-->
         @if(isset($cliente->id))

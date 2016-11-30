@@ -19,6 +19,8 @@ class TabelaPedidoProduto extends Migration
             $table->integer('produto_id')->unsigned();
             $table->foreign('produto_id')->references('id')->on('produtO');
             $table->integer('qtd')->default(1);
+            $table->float('valorItem', 6 , 2);
+
             $table->timestamps();
         });
     }

@@ -11,4 +11,8 @@ class Entregador extends Model
     {
         return $this->belongsTo('App\Empresa', 'empresa_id' , 'id');
     }
+    public function pedido()
+    {
+        return $this->hasMany('App\Pedido', 'entregador_id' , 'id');
+    }
 }
