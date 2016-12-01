@@ -4,7 +4,7 @@
 <div class="container">
 <h2>Entregador</h2>
 <br><br>
-    <form class="form-inline" role="form" method="post" id="auto" action="" >
+    <form class="form-inline" role="form" method="post" id="auto" action="/entregador/create" >
     {{ csrf_field() }}
         <!--Dados a serem inseridos-->
         <div class="form-group{{ $errors->has('empresa') ? ' has-error' : '' }}">

@@ -76,7 +76,7 @@ class EmpresaController extends Controller
 
     public function addEntregador(Request $request)
     {
-        $empresas = Empresa::find($request->empresa)->get();
+        $empresas = Empresa::where('id' , '=' , $request['empresa'])->get();
         return view('entregador.create' , ['empresas' => $empresas]);
     }
 
