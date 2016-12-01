@@ -11,7 +11,7 @@
         <div class="form-group{{ $errors->has('cliente') ? ' has-error' : '' }}">
             <label for="cliente" class="col-md-4 control-label">Cliente</label>
             <input id="cliente" type="text" class="form-control" name="cliente" value="{{$cliente->nome}}" size="30" required readonly="readonly">
-             <input type="hidden" name="clienteid" value="{{$cliente->id}}">
+            <input type="hidden" name="clienteid" value="{{$cliente->id}}">
                 @if ($errors->has('cliente'))
                     <span class="help-block">
                         <strong>{{ $errors->first('cliente') }}</strong>
@@ -22,7 +22,7 @@
         @endif
          <div class="form-group{{ $errors->has('entregador') ? ' has-error' : '' }}">
            <label for="entregador" class="col-md-4 control-label">Entregador</label>
-           <select class="form-control" name="entregador" value="{{ old('entregador') }}" id="entregador" required autofocus>
+           <select class="form-control" name="entregador" value="{{ old('entregador') }}" id="entregador" required >
                 <option value ='0'>Selecione um entregador ...</option>
             @foreach($entregadores as $entregador)
                 <option value="{{$entregador->id}}">{{$entregador->nome}}</option>

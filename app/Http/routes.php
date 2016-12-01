@@ -31,13 +31,11 @@ Route::get('/', function () {
 		Route::get('/pedido'				, 'PedidoController@index');
 		Route::post('/pedido'				, 'PedidoController@index');
 		Route::get('/pedido/selCliente'		, 'PedidoController@selCliente');
-		Route::get('/pedido/addCliente'	, 'PedidoController@addCliente');
+		Route::get('/pedido/addCliente'		, 'PedidoController@addCliente');
 		Route::post('/pedido/addCliente'	, 'ClienteController@store');
 		Route::post('/pedido/create'		, 'PedidoController@create');
-		Route::post('/pedido/edit'			, 'PedidoController@edit');
 		Route::post('/pedido/show'			, 'PedidoController@show');
 		Route::get('/pedido/addPedido'		, 'PedidoController@addPedido');
-		Route::post('/pedido/delete'		, 'PedidoController@delete');
 		Route::post('/pedido/criado'		, 'PedidoController@store');
 		Route::post('/pedido/altualizado'	, 'PedidoController@atualizaValores');
 		Route::post('/pedido/finalizado'	, 'PedidoController@finalizar');

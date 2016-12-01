@@ -45,9 +45,30 @@
                 @endforeach
                 </tbody>
                 </table>
-
-                <label>Talor Total:</label>
-                <label>{{$pedido->pedidoProduto->sum('valorItem')}}</label>
+                <div class="form-group">
+                    <label>Valor total de produtos:</label>
+                    <label>R$ {{$pedido->pedidoProduto->sum('valorItem')}}</label>
+                </div>
+                <div class="form-group">
+                    <label>Taxa de entrega:</label>
+                    <label>R$ {{$pedido->taxaEntrega}}</label>
+                </div>
+                 <div class="form-group">
+                    <label>Total a pagar:</label>
+                    <label>R$ {{$pedido->valorTotal}}</label>
+                </div>
+                 <div class="form-group">
+                   <form method = "POST"  action="/pedido/altualizado">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="pedido" value="{{$pedido->id}}">
+                        <label>Valor a receber:</label>
+                        R$  <input id="valor" type="text" class="valor" name="valor" value="{{$pedido->valorEntregue}}" size="8" required>
+                    </form>  
+                </div>
+                <div class="form-group">
+                    <label>Troco:</label>
+                    <label>R$ {{$pedido->troco}}</label>
+                </div>
 
 <br><br>
                 <!--Botoes-->

@@ -71,7 +71,7 @@ class EntregadorController extends Controller
     public function show(Request $request)
     {   
         $entregador = Entregador::find($request->entregador);
-        $empresa    = Empresa::find($entregador->empresa_id)->get();
+        $empresa    = Empresa::find($entregador->empresa_id);
         return view('entregador.show' , ['empresa' => $empresa , 'entregador' => $entregador]); 
     }
 

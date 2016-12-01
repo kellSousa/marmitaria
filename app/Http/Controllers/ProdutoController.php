@@ -29,6 +29,8 @@ class ProdutoController extends Controller
         }
         if(isset($var)){                       
             $produtos = $var;
+        }else{
+            $produtos = [];
         }
         return view('produto.index' , ['produtos' => $produtos]);
     }
@@ -52,7 +54,6 @@ class ProdutoController extends Controller
         $produto->descricao         = $request['descricao'];
         $produto->tamanhoProduto_id = $request['tamanho'];
         $produto->custo             = $request['valor'];
-        $produto->valorItem         = $request['valor'];
         $produto->save();
 
         return Redirect::to('produto')

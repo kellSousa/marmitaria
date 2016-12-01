@@ -43,7 +43,7 @@
         <tr>
             <td>{{$produto->nome}} </td>
             <td>{{$produto->descricao}} </td>
-            <td>{{$produto->custo}} </td>
+            <td>R$ {{$produto->custo}} </td>
             <td>            
             <div>
             <!--Botoes-->  
