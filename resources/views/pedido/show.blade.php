@@ -45,11 +45,29 @@
                 </tbody>
                 </table>
 
-                <label>Talor Total:</label>
-                <label>{{$pedido->pedidoProduto->sum('valorItem')}}</label>               
+               <div class="form-group">
+                    <label>Valor total de produtos:</label>
+                    <label>R$ {{$pedido->pedidoProduto->sum('valorItem')}}</label>
+                </div>
+                <div class="form-group">
+                    <label>Taxa de entrega:</label>
+                    <label>R$ {{$pedido->taxaEntrega}}</label>
+                </div>
+                 <div class="form-group">
+                    <label>Total a pagar:</label>
+                    <label>R$ {{$pedido->valorTotal}}</label>
+                </div>
+                 <div class="form-group">
+                    <label>Valor a receber:</label>
+                    <label>R$  {{$pedido->valorEntregue}}</label>
+                </div>
+                <div class="form-group">
+                    <label>Troco:</label>
+                    <label>R$ {{$pedido->troco}}</label>
+                </div>         
         </div>
         <br><br>
-
+        @if(isset($status))
         <div class="form-group">
             <form  method = "POST"  action="{{url('/pedido/editado')}}"  style="display:inline">
                 {{ csrf_field() }}
@@ -60,21 +78,19 @@
                     <option value="{{$statu->id}}">{{$statu->nome}}</option>
                 @endforeach
                 </select>
+
+                <input class="confirm" type="submit" value="Alterar" "/>
             </form>  
         </div>
-        
+
+
+        @endif
 
 		<!--Botoes-->
         <div class="form-group">           
                <a class="btn" href="{{url('/pedido')}}"> Voltar </a> 
         </div>
 
-        <div class="form-group">           
-            <form method = "POST"  action="{{url('/pedido/edit')}}"  style="display:inline">
-                {{ csrf_field() }}
-                <input type="hidden" name="pedido" value="{{$pedido->id}}">
-                <input class="confirm" type="submit" value="Alterar" "/>
-            </form>  
-        </div>
+       
 </div>
 @endsection

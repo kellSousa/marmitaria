@@ -21,6 +21,10 @@ class TabelaPedido extends Migration
             $table->integer('entregador_id')->unsigned();
             $table->foreign('entregador_id')->references('id')->on('entregador');
             $table->boolean('ativo')->default(false);
+            $table->float('taxaEntrega', 6 , 2);
+            $table->float('valorTotal', 6 , 2);
+            $table->float('valorEntregue', 6 , 2);
+            $table->float('troco', 6 , 2);
             $table->timestamps();
         });
     }
