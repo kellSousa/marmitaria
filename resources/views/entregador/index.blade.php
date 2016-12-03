@@ -18,6 +18,7 @@
 <br>
 
 <a class="btn" href="{{url('/entregador/create')}}"> Add Entregador </a>
+<a class="btn" href="{{url('/entregador/entregas')}}"> Entregas Realizadas </a>
 
     @if ($message = Session::get('erro'))
         <div class="alertr">

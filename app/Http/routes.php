@@ -64,6 +64,9 @@ Route::get('/', function () {
 		Route::post('/entregador/delete'	, 'EntregadorController@delete');
 		Route::post('/entregador/create'	, 'EntregadorController@store');
 		Route::post('/entregador/editado'	, 'EntregadorController@update');
+		Route::get('/entregador/entregas'	, 'EntregadorController@entregas');
+		Route::post('/entregador/entregas'	, 'EntregadorController@buscaEntregas');
+		
 
 		Route::get('/produto'				, 'ProdutoController@index');
 		Route::post('/produto'				, 'ProdutoController@index');
