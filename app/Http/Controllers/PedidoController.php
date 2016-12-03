@@ -66,7 +66,7 @@ class PedidoController extends Controller
             $entregadores   = Entregador::where('ativo' , '=' , '1')->get();
             $produtos       = Produto::where('ativo' , '=' , '1')->get();
             echo "<script>alert('Selecione os produtos.');</script>";         
-            return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => $entregadores , 'produtos' => $produtos]);    
+            return view('pedido.create' ,['cliente' => $cliente , 'entregadores' => entregadores , 'produtos' => $produtos]);    
         }
 
         $pedido = new Pedido();
@@ -134,11 +134,9 @@ class PedidoController extends Controller
         }else{
             $pedido->ativo  = 1;
             $pedido->save();
-            echo "<script>alert('Pedido cadastrado com sucesso.');</script>";
-            return Redirect('pedido');
+            return Redirect::to('pedido')
+                        ->with('success','Pedido cadastrado com sucesso');
         }
-        
-        
     }
 
     public function show(Request $request)

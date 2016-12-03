@@ -8,6 +8,7 @@ use Redirect;
 use Auth;
 use App\Entregador;
 use App\Empresa;
+use App\Pedido;
 
 class EntregadorController extends Controller
 {
@@ -109,7 +110,6 @@ class EntregadorController extends Controller
         return Redirect::to('entregador')
                             ->with('success' , 'Entregador alterado com sucesso');
     }
-
     
     public function delete(Request $request)
     {
@@ -120,4 +120,35 @@ class EntregadorController extends Controller
         return Redirect::to('entregador')
                             ->with('success' , 'Entregador deletado com sucesso');
     }
+
+    public function entregas()
+    {        
+        $entregadores = Entregador::where('ativo' , '=' , '1')->get();
+        return view('entregador.entregas' , ['entregadores' => $entregadores]);
+    }
+
+    public function buscaEntregas(Request $request)
+    {            
+        $entregadores = Entregador::where('ativo' , '=' , '1')->get();
+        if($request->dataI > $request->dataF){
+            echo "<script>alert('A data Inicial é maior de a data final.');</script>";
+            return view('entregador.entregas' , ['entregadores' => $entregadores]);
+        }        
+        $pedidos = Pedido::where('ativo', '=' ,'1')
+        ->whereBetween('created_at', [$request->dataI, $request->dataF])
+        ->get();
+        if($request->entregador != 0){
+            foreach ($pedidos as $pedido) {
+                if($pedido->entregador_id == $request->entregador){
+                    $var[] =  $pedido;
+                }
+            }
+            if(isset($var)){
+              $pedidos = $var;
+            }   
+        }
+        return view('entregador.entregas' , ['entregadores' => $entregadores, 'pedidos' => $pedidos]);
+    }
+
+
 }

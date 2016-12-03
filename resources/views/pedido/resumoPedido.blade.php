@@ -37,7 +37,7 @@
                     <form method = "POST"  action="/pedido/altualizado"  style="display:inline">
                         {{ csrf_field() }}
                         <input type="hidden" name="item" value="{{$pedidoProduto->id}}">
-                        <td><input type="number" name="quantidade" value="{{$pedidoProduto->qtd}}" onclick="clicked(event)"> </td>
+                        <td><input type="number"  min="1" name="quantidade" value="{{$pedidoProduto->qtd}}" onclick="clicked(event)"> </td>
                     </form>                     
                     <td>{{$pedidoProduto->valorItem}}</td>
                    
