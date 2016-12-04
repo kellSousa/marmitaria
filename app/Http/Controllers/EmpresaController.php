@@ -43,7 +43,6 @@ class EmpresaController extends Controller
 
     public function store(Request $request)
     {
-
          $this->validate($request, [
             'nome'     => 'required|min:5',
             'cnpj'     => 'required|cnpj|unique:empresa',

@@ -56,10 +56,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/register') }}">Registrar</a></li>
+                        
                         <li><a href="{{ url('/login') }}">Login</a></li>
                     @else
                         @if(Auth::user()->nivelusuario_id == '1')
+                        <li><a href="{{ url('/registe') }}">Registrar</a></li>
                         <li><a href="{{ url('/produto') }}">Produto</a></li>
                         <li><a href="{{ url('/empresa') }}">Empresa</a></li>
                         <li><a href="{{ url('/entregador') }}">Entregador</a></li>

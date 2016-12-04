@@ -45,6 +45,8 @@ Route::get('/', function () {
 	});
 
 	Route::group(['middleware' => ['auth', 'admin']], function(){
+		Route::get('/registe'				, 'UserController@register');
+		Route::post('/registe'				, 'UserController@store');
 
 		Route::get('/empresa'				, 'EmpresaController@index');
 		Route::post('/empresa'				, 'EmpresaController@index');

@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/registe') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -44,9 +44,11 @@
                             <div class="col-md-6">
                             <select id="nivelusuario_id"  class="form-control" name="nivelusuario_id" value="{{ old('nivelusuario_id') }}" required autofocus>
                                 <option value="0">Selecione um cargo</option>
+                            @if(isset($cargos))
                             @foreach ($cargos as $cargo)
                                 <option value='{{$cargo->id}}'>{{$cargo->nome}}</option>
                             @endforeach
+                            @endif
                             </select>
                              
                                 @if ($errors->has('nivelusuario_id'))
