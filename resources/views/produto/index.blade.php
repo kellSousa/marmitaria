@@ -27,9 +27,9 @@
     
         <br>
 
-        <a class="btn btn-primary" href="{{url('/produto/create')}}" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Adicionar Produto </a>
+        <a class="btn btn-primary" href="{{url('/produto_create')}}" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Adicionar Produto </a>
 
-            @if ($message = Session::get('erro'))
+             @if ($message = Session::get('erro'))
                 <div class="alertr">
                     <p>{{ $message }}</p>
                 </div>
@@ -58,17 +58,17 @@
                             <td>            
                             
                             <!--Botoes-->  
-                            <form method = "POST"  action="{{url('/produto/show')}}"  style="display:inline">
+                            <form method = "POST"  action="{{url('/produto_show')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
                                 <input class="btn btn-mini" class="confirm" type="submit" value="Detalhes" />
                             </form>   
-                            <form method = "POST"  action="{{url('/produto/edit')}}"  style="display:inline">
+                            <form method = "POST"  action="{{url('/produto_edit')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
                                 <input class="btn btn-mini" class="confirm" type="submit" value="Alterar"/>
                             </form>   
-                            <form method = "POST"  action="{{url('/produto/delete')}}"  style="display:inline">
+                            <form method = "POST"  action="{{url('/produto_delete')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
                                 <input class="btn btn-mini" class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>

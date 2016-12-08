@@ -72,11 +72,11 @@ Route::get('/', function () {
 
 		Route::get('/produto'				, 'ProdutoController@index');
 		Route::post('/produto'				, 'ProdutoController@index');
-		Route::get('/produto/create'		, 'ProdutoController@create');
-		Route::post('/produto/edit'			, 'ProdutoController@edit');
-		Route::post('/produto/show'			, 'ProdutoController@show');
-		Route::post('/produto/delete'		, 'ProdutoController@delete');
-		Route::post('/produto/create'		, 'ProdutoController@store');
-		Route::post('/produto/editado'		, 'ProdutoController@update');
+		Route::get('/produto_create'		, 'ProdutoController@create');
+		Route::post('/produto_edit'			, 'ProdutoController@edit');
+		Route::post('/produto_show'			, 'ProdutoController@show');
+		Route::post('/produto_delete'		, 'ProdutoController@delete');
+		Route::post('/produto_create'		, 'ProdutoController@store');
+		Route::post('/produto_editado'		, 'ProdutoController@update');
 
 });
