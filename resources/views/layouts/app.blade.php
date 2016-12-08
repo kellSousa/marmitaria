@@ -11,7 +11,7 @@
     <script src="{!! asset('js/jquery-ui.js') !!}"></script>
     
 
-    <title>Laravel</title>
+    <title>Casa das Marmitas</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -22,6 +22,7 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{!! asset('css/font-awesome4-5.min.css') !!}" rel='stylesheet' type='text/css'>   
     <link rel="stylesheet" href="{!! asset('css/jquery-ui.css') !!}">
+    <link href="css/style.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Lato';
@@ -46,7 +47,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    Marmitaria
+                    Casa das Marmitas
                 </a>
             </div>
 
