@@ -4,7 +4,7 @@
 <div class="container">
 <h2>Produto</h2>
 <br><br>
-    <form class="form-inline" role="form" method="post" id="auto" action="/produto/editado" >
+    <form class="form-inline" role="form" method="post" id="auto" action="/produto_editado" >
     {{ csrf_field() }}
     <input type="hidden" name="produto" value="{{$produto->id}}">
         <!--Dados a serem inseridos-->

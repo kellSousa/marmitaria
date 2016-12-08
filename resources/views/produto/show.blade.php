@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">           
-               <form method = "POST"  action="{{url('/produto/edit')}}"  style="display:inline">
+               <form method = "POST"  action="{{url('/produto_edit')}}"  style="display:inline">
                 {{ csrf_field() }}
                 <input type="hidden" name="produto" value="{{$produto->id}}">
                 <input class="confirm" type="submit" value="Alterar"/>

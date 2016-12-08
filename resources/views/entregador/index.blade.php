@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="container">
-<h2>Entregador</h2>
-<br><br>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-success">
+        <div class="panel-heading">Entregador</div>
+        <!--Um novo painel-->
+          <div class="panel-body">
      <form method="POST" action="{{url('entregador')}}" style="display:inline"> 
       {{ csrf_field() }}        
         <div class="form-group" >
@@ -68,7 +72,11 @@
         @endforeach
     </tbody>
 </table>
-</div>
+ </div>
+       </div>
+       </div>
+       </div>
+       </div> 
 @endsection
 <script>
     function clicked(e) {
