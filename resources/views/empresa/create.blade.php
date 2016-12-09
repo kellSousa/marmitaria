@@ -4,8 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-success">
-        <div class="panel-heading">Empresa</div>
+      <div class="panel panel-danger">
+        <div class="panel-heading">CADASTRAR EMPRESA</div>
         <!--Um novo painel-->
           <div class="panel-body">
 
@@ -24,7 +24,7 @@
 
                 <div class="form-group{{ $errors->has('cnpj') ? ' has-error' : '' }}">
                     <label for="cnpj" class="col-md-4 control-label">CNPJ</label>
-                    <input class="form-control cnpj" type="text" id="cnpj" name="cnpj" value="{{ old('cnpj') }}" size="30" required>
+                    <input class="form-control cnpj" type="text" id="cnpj" name="cnpj" value="{{ old('cnpj') }}" size="20" required>
                         @if ($errors->has('cnpj'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('cnpj') }}</strong>
@@ -32,6 +32,17 @@
                         @endif
                 </div>
 
+                  <div class="form-group{{ $errors->has('telefone') ? ' has-error' : '' }}">
+                    <label for="telefone" class="col-md-4 control-label">Telefone</label>
+                    <input id="telefone" type="text" class="form-control telefoneFixo" name="telefone" value="{{ old('telefone') }}" size="14" required>
+                        @if ($errors->has('telefone'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('telefone') }}</strong>
+                            </span>
+                        @endif
+                </div>
+
+                <br><br>
                 <div class="form-group{{ $errors->has('endereco') ? ' has-error' : '' }}">
                     <label for="endereco" class="col-md-4 control-label">Endereço</label>
                     <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" size="30" required>
@@ -42,16 +53,7 @@
                         @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                    <label for="telefone" class="col-md-4 control-label">Telefone</label>
-                    <input id="telefone" type="text" class="form-control telefoneFixo" name="telefone" value="{{ old('telefone') }}" size="30" required>
-                        @if ($errors->has('telefone'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('telefone') }}</strong>
-                            </span>
-                        @endif
-                </div>
-
+              
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="col-md-4 control-label">Email</label>
                     <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" size="30" required>
@@ -61,11 +63,11 @@
                             </span>
                         @endif
                 </div>
+                <br><br>    
                 <!--Botoes-->
                 <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
-                        <input class="btn btn-primary" type="submit" value="Registrar">
-                    </div>
+                        <button class="btn btn-primary" type="submit" value="">Cadastrar</button>
+                    
                 </div>
             </form>
         </div>

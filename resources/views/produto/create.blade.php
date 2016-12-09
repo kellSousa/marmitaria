@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-success">
-        <div class="panel-heading">Produto</div>
+      <div class="panel panel-danger">
+        <div class="panel-heading">CADASTRAR PRODUTO</div>
         <!--Um novo painel-->
           <div class="panel-body">
           <form class="form-inline" role="form" method="post" id="auto" action="" >
@@ -30,7 +31,7 @@
                             </span>
                         @endif
                 </div>
-
+                <br><br>
                 <div class="form-group{{ $errors->has('tamanho') ? ' has-error' : '' }}">
                    <label for="Tamanho" class="col-md-4 control-label">Tamanho</label>
                    <select class="form-control" name="tamanho" value="{{ old('tamanho') }}" id="tamanho" required autofocus>
@@ -47,7 +48,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
-                    <label for="Valor" class="col-md-4 control-label">Valor</label>
+                    <label for="Valor" class="col-md-4 control-label">Valor R$</label>
                     <input id="valor" type="text" class="form-control valor" name="valor" value="{{ old('valor') }}" size="30" required>
                         @if ($errors->has('valor'))
                             <span class="help-block">
@@ -55,11 +56,10 @@
                             </span>
                         @endif
                 </div>        
-
+                <br><br>
                 <!--Botoes-->
                 <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
-                        <input class="btn btn-primary" type="submit" value="Registrar">
+                        <input class="btn btn-primary" type="submit" value="Cadastrar">
                     </div>
                 </div>
             </form>

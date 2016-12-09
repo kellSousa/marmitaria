@@ -1,12 +1,13 @@
 body{
- background: #B22222;
+ background:#B22222;
 }
 
 /*css titulo dos formularios*/
       .panel-heading {
-        background-color: #FF6347 !important;
+        background-color: #CD5C5C !important;
         color:#000 !important;
         font-size: 15pt;
+
       }
      /*css menus*/
        .navbar-default{
@@ -39,12 +40,12 @@ body{
       }      
 
       .navbar-default .navbar-nav >.dropdown > .dropdown-menu{
-        background-color:#FFCB9F !important;
+        background-color:#FFA500 !important;
         
       }
 
       .navbar-default .navbar-nav >.dropdown > .dropdown-menu > .divider{
-        background-color:#FFCB9F !important;
+        background-color:#FFA500 !important;
         
       }
 
@@ -70,8 +71,8 @@ body{
      
       /*css botão dos formularios*/
       .btn-primary{
-        background-color: #FF6347; 
-        border-color:#FF6347;
+        background-color: #CD5C5C; 
+        border-color:#CD5C5C;
         margin:0px 0px 20px !important;
     
       }
@@ -91,16 +92,26 @@ body{
 
       .btn-primary:visited{
         color:#000;
-        background-color:#609999 !important;
-        border-color:#609999 !important;
+        background-color:#CD5C5C !important;
+        border-color:#CD5C5C !important;
+        text-align: center;
       }
 
       .btn-mini{
-        color:#218585;
+        color:#000;
         background-color:transparent;
-        border-color:#218585;
+        border-color:#B22222;
+        border: 2px solid;
         
       }
+      .btn-mini:hover{
+        color:#B22222;
+        background-color:transparent;
+        border-color:#B22222;
+        border: 1px solid;
+      }
+
+                    
    
       /*css formulario de cadastro inline*/
 .form-group{
@@ -109,15 +120,18 @@ body{
 }
 
       /**/
-.tabela-buscar{
+.table-responsive{
    width:auto;
    margin:30px -5px !important;
+
 }
 
-.tabela-educ{
-  width:auto !important;
-  margin:0px;
+.danger{
+  color:#B22222 ;
+  background-color:#B22222 ;
+
 }
+
 
 .footer{
   position:absolute;

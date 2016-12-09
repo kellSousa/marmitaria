@@ -4,10 +4,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-success">
-        <div class="panel-heading">Produto</div>
+      <div class="panel panel-danger">
+        <div class="panel-heading">PRODUTO</div>
         <!--Um novo painel-->
-          <div class="panel-body">
+         <div class="panel-body">
             <form class="form-horizontal" method="POST" action="{{url('produto')}}" style="display:inline"> 
               {{ csrf_field() }}  
               <div class="form-group">
@@ -22,20 +22,18 @@
                 </div>  
                </div>
            </div>
-
+           <h4>Adicione um Novo Produto</h4>
+           <a class="btn btn-primary" href="{{url('/produto_create')}}" title="Adicionar Produto" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
              </form>
-    
-        <br>
+          
 
-        <a class="btn btn-primary" href="{{url('/produto_create')}}" ><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Adicionar Produto </a>
-
-             @if ($message = Session::get('erro'))
-                <div class="alertr">
+            @if ($message = Session::get('erro'))
+                <div class="alert alert-danger">
                     <p>{{ $message }}</p>
                 </div>
             @endif
              @if ($message = Session::get('success'))
-                <div class="alert">
+                <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
             @endif
@@ -44,10 +42,10 @@
                     <div class="table-responsive">
                       <table border = "1" class="table table-condensed">   
                         <thead>
-                            <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Valor R$</th>
-                            <th>Ações</th>
+                            <th class="danger">Nome</th>
+                            <th class="danger">Descrição</th>
+                            <th class="danger">Valor R$</th>
+                            <th class="danger">Ações</th>
                         </thead>
                     <tbody>
                     @foreach($produtos as $produto)
@@ -61,17 +59,17 @@
                             <form method = "POST"  action="{{url('/produto_show')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
-                                <input class="btn btn-mini" class="confirm" type="submit" value="Detalhes" />
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Detalhes"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i></button>
                             </form>   
                             <form method = "POST"  action="{{url('/produto_edit')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
-                                <input class="btn btn-mini" class="confirm" type="submit" value="Alterar"/>
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Alterar"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
                             </form>   
                             <form method = "POST"  action="{{url('/produto_delete')}}"  style="display:inline">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="produto" value="{{$produto->id}}">
-                                <input class="btn btn-mini" class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Deletar" onclick="clicked(event)"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></button>
                             </form>                 
                             
                             </td>
@@ -92,4 +90,3 @@
                 if(!confirm('Deseja deletar este produto?'))e.preventDefault();
             }
         </script>
-

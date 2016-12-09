@@ -2,34 +2,40 @@
 
 @section('content')
 <div class="container">
-<h2>Detalhes do Pedido</h2>
-<br><br>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-danger">
+        <div class="panel-heading">DETALHES DO PEDIDO</div>
+        <!--Um novo painel-->
+         <div class="panel-body">
+
         <div class="form-group">
-            <label  class="col-md-4 control-label">Cliente</label>
+            <label  class="col-md-4 control-label">Cliente:</label>
             <label>{{$pedido->cliente->nome}}</label>
         </div>
 
         <div class="form-group">
-            <label  class="col-md-4 control-label">Entregador</label>
+            <label  class="col-md-4 control-label">Entregador:</label>
             <label>{{$pedido->entregador->nome}}</label>
         </div>
 
         <div class="form-group">
-            <label  class="col-md-4 control-label">Status</label>
+            <label  class="col-md-4 control-label">Status:</label>
             <label>{{$pedido->status->nome}}</label>
         </div>
 
         <br><br> 
-      <div class="form-group">
-        <table class="table">
-            <header>
-                <th>Item</th>
-                <th>Nome</th>
-                <th>Tamanho</th>
-                <th>Valor Unit</th>
-                <th>Qtd</th>
-                <th>Valor total</th>
-            </header>
+<!-- Inicio da Tabela que mostra os resultados de Busca -->
+            <div class="table-responsive">
+              <table border = "1" class="table table-condensed">   
+                <thead>
+                <th class="danger">Item</th>
+                <th class="danger">Nome</th>
+                <th class="danger">Tamanho</th>
+                <th class="danger">Valor Unit</th>
+                <th class="danger">Qtd</th>
+                <th class="danger">Valor Total</th>
+            </thead>
             <tbody>   
                 @foreach($pedido->pedidoProduto as $pedidoProduto)
                 <tr>                
@@ -44,7 +50,8 @@
                 @endforeach
                 </tbody>
                 </table>
-
+                <br><br>
+             
                <div class="form-group">
                     <label>Valor total de produtos:</label>
                     <label>R$ {{$pedido->pedidoProduto->sum('valorItem')}}</label>
@@ -64,33 +71,42 @@
                 <div class="form-group">
                     <label>Troco:</label>
                     <label>R$ {{$pedido->troco}}</label>
-                </div>         
+                </div>
+                
+
         </div>
-        <br><br>
+        
         @if(isset($status))
-        <div class="form-group">
-            <form  method = "POST"  action="{{url('/pedido/editado')}}"  style="display:inline">
+        
+            <form class="form-inline" method = "POST"  action="{{url('/pedido_editado')}}"  style="display:inline">
                 {{ csrf_field() }}
+                <div class="form-group">
                 <input type="hidden" name="pedido" value="{{$pedido->id}}">
-                <select name="statusPedido" type="submit">
+                <select class="form-control" name="statusPedido" type="submit">
                     <option value="0">Novo Status</option>
                 @foreach($status as $statu)
                     <option value="{{$statu->id}}">{{$statu->nome}}</option>
                 @endforeach
                 </select>
-
-                <input class="confirm" type="submit" value="Alterar" "/>
+                <br><br>
+                <button class="btn btn-primary" class="confirm" type="submit" title="Alterar">Alterar</button> 
+                </div>
             </form>  
-        </div>
+        
 
 
         @endif
 
-		<!--Botoes-->
-        <div class="form-group">           
-               <a class="btn" href="{{url('/pedido')}}"> Voltar </a> 
+        <!--Botoes-->
+        <div class="form-group">   
+                <a class="btn btn-primary" href="{{url('/pedido')}}"title="Voltar"><i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i></a>  
+                       
         </div>
 
        
 </div>
 @endsection
+</div>
+</div>
+</div>
+</div>
