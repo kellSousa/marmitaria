@@ -1,0 +1,141 @@
+body{
+ background:#B22222;
+}
+
+/*css titulo dos formularios*/
+      .panel-heading {
+        background-color: #CD5C5C !important;
+        color:#000 !important;
+        font-size: 15pt;
+
+      }
+     /*css menus*/
+       .navbar-default{
+        background-color: #FFA500  !important;
+      }
+      
+      .navbar-default .navbar-brand{
+        color:#000;
+      }
+      
+      .navbar-default .navbar-brand:hover,
+      .navbar-default .navbar-brand:focus{
+        color:#B22222;
+      }
+      
+      .navbar-default .navbar-nav > .dropdown > .dropdown-toggle:hover{
+        background-color:transparent !important;
+        color:#B22222 !important;
+        
+      }
+      
+      .navbar-default .navbar-nav > .menu-f > a:hover{
+        background-color:transparent !important;
+        color:#B22222 !important;
+      }
+      
+      .navbar-default .navbar-nav >.dropdown > .dropdown-toggle{
+        background-color:transparent !important;
+        color:#000;
+      }      
+
+      .navbar-default .navbar-nav >.dropdown > .dropdown-menu{
+        background-color:#FFA500 !important;
+        
+      }
+
+      .navbar-default .navbar-nav >.dropdown > .dropdown-menu > .divider{
+        background-color:#FFA500 !important;
+        
+      }
+
+      .navbar-default .navbar-nav>li>a {
+      color:#000;   
+      }  
+
+      .navbar-default .navbar-nav > .dropdown >.logout > a:hover {
+      background-color:#c00 !important;   
+      }
+      
+      /*css icones*/
+
+      i.glyphicon {
+         font-size: 20px;
+         color:#000;
+      }
+      .fa-btn {
+         margin-right: 6px;
+      }
+      
+      #tudo{ border:#ff8a65 10px solid;width:300%;margin:0 auto ;}
+     
+      /*css botão dos formularios*/
+      .btn-primary{
+        background-color: #CD5C5C; 
+        border-color:#CD5C5C;
+        margin:0px 0px 20px !important;
+    
+      }
+
+      .btn-primary:hover{
+        color:#fff;
+        background-color:#B22222;
+        border-color:#B22222;
+        
+      }
+
+      .btn-primary:active{
+        color:#000;
+        background-color:#B22222 !important;
+        border-color:#B22222 !important;
+      }
+
+      .btn-primary:visited{
+        color:#000;
+        background-color:#CD5C5C !important;
+        border-color:#CD5C5C !important;
+        text-align: center;
+      }
+
+      .btn-mini{
+        color:#000;
+        background-color:transparent;
+        border-color:#B22222;
+        border: 2px solid;
+        
+      }
+      .btn-mini:hover{
+      	color:#B22222;
+        background-color:transparent;
+        border-color:#B22222;
+        border: 1px solid;
+      }
+
+                    
+   
+      /*css formulario de cadastro inline*/
+.form-group{
+  
+  margin:10px;
+}
+
+      /**/
+.table-responsive{
+   width:auto;
+   margin:30px -5px !important;
+
+}
+
+.danger{
+	color:#B22222 ;
+	background-color:#B22222 ;
+
+}
+
+
+.footer{
+  position:absolute;
+  text-align:right;
+  bottom:0;
+  height: 8px;
+}

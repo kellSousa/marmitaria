@@ -2,76 +2,91 @@
 
 @section('content')
 <div class="container">
-<h2>Entregador</h2>
-<br><br>
-     <form method="POST" action="{{url('entregador')}}" style="display:inline"> 
-      {{ csrf_field() }}        
-        <div class="form-group" >
-                <strong>Buscar entregador:</strong>
-                <input class="form-control" placeholder="Entregador" name="pesq" type="text" >
-        </div>
-        <div class="form-group" >
-                <button type="submit" class="btn" >Buscar</button>
-        </div>  
-     </form>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-danger">
+        <div class="panel-heading">ENTREGADOR</div>
+        <!--Um novo painel-->
+          <div class="panel-body">
+            <form class="form-horizontal" method="POST" action="{{url('entregador')}}" style="display:inline"> 
+              {{ csrf_field() }}        
+              <div class="form-group">
+                  <div class="col-md-6">
+                        <div class="col-lg-10">
+                        <div class="input-group">
+                        <input class="form-control" placeholder="Buscar Entregador..." name="pesq" type="text" >
+                      <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                          </span>
+                </div>
+                </div>  
+               </div>
+           </div>
+           <h4>Adicione um Novo Entregador / Lista de Entregas</h4>
+        <a class="btn btn-danger" href="{{url('/entregador_create')}}" title="Adicionar Entregador"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></a>
+        <a class="btn btn-danger" href="{{url('/entregador_entregas')}}"> Entregas Realizadas </a>
+             </form>
 
-<br>
+             <br><br>
+            @if ($message = Session::get('erro'))
+                <div class="alert alert-danger">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+             @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
 
-<a class="btn" href="{{url('/entregador/create')}}"> Add Entregador </a>
-<a class="btn" href="{{url('/entregador/entregas')}}"> Entregas Realizadas </a>
+    <!-- Inicio da Tabela que mostra os resultados de Busca -->
+                <div class="table-responsive">
+                  <table border = "1" class="table table-condensed">   
+                    <thead>
+                        <th class="danger">Nome</th>
+        
+                        <th class="danger">Celular</th>
+                        <th class="danger">Ações</th>
 
-    @if ($message = Session::get('erro'))
-        <div class="alertr">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-     @if ($message = Session::get('success'))
-        <div class="alert">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-<table class="table">
-    <thead>
-        <th>Nome</th>
-        <th>Celular</th>
-        <th>Ações</th>
-
-    </thead>
-    <tbody>
-    @foreach($entregadores as $entregador)
-        <tr>
-            <td>{{$entregador->nome}} </td>
-            <td>{{$entregador->celular}} </td>
-            <td>            
-            <div>
-            <!--Botoes-->    
-            <form method = "POST"  action="{{url('/entregador/show')}}"  style="display:inline">
-                {{ csrf_field() }}
-                <input type="hidden" name="entregador" value="{{$entregador->id}}">
-                <input class="confirm" type="submit" value="Detalhes" />
-            </form>  
-            <form method = "POST"  action="{{url('/entregador/edit')}}"  style="display:inline">
-                {{ csrf_field() }}
-                <input type="hidden" name="entregador" value="{{$entregador->id}}">
-                <input class="confirm" type="submit" value="Alterar" />
-            </form>  
-            <form method = "POST"  action="{{url('/entregador/delete')}}"  style="display:inline">
-                {{ csrf_field() }}
-                <input type="hidden" name="entregador" value="{{$entregador->id}}">
-                <input class="confirm" type="submit" value="Deletar" onclick="clicked(event)"/>
-            </form>  
-
-            </div> 
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+                    </thead>
+                    <tbody>
+                    @foreach($entregadores as $entregador)
+                        <tr>
+                            <td>{{$entregador->nome}} </td>
+                            <td>{{$entregador->celular}} </td>
+                            <td>            
+                            <div>
+                            <!--Botoes-->    
+                            <form method = "POST"  action="{{url('/entregador_show')}}"  style="display:inline">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Detalhes"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i></button>
+                            </form>  
+                            <form method = "POST"  action="{{url('/entregador_edit')}}"  style="display:inline">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Alterar"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
+                            </form>  
+                            <form method = "POST"  action="{{url('/entregador_delete')}}"  style="display:inline">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="entregador" value="{{$entregador->id}}">
+                                <button class="btn btn-mini" class="confirm" type="submit" title="Deletar" onclick="clicked(event)"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></button>
+                                
+                            </form>  
+                            </div> 
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                </div>
+                @endsection
+                <script>
+                function clicked(e) {
+                        if(!confirm('Deseja deletar este entregador ?'))e.preventDefault();
+                    }
+                </script>
 </div>
-@endsection
-<script>
-    function clicked(e) {
-        if(!confirm('Deseja deletar este entregador'))e.preventDefault();
-    }
-</script>
+</div>
+</div>
+</div>

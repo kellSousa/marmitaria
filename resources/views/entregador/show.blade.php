@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="container">
-<h2>Entregador</h2>
-<br><br>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-danger">
+        <div class="panel-heading">DETALHES DO ENTREGADOR</div>
+        <!--Um novo painel-->
+        <div class="panel-body">
 		<!--Dados selecionados-->
         <div class="form-group">
             <label for="empresa" class="col-md-4 control-label">Empresa</label>
@@ -36,21 +40,24 @@
 		</div>
 
 		<div class="form-group">
-            <label for="updated_at" class="col-md-4 control-label">Data de ultima alteração</label>
+            <label for="updated_at" class="col-md-4 control-label">Data da Última Alteração</label>
 			<label>{{$entregador->updated_at->format('d-m-Y')}}</label>
 		</div>
 
 		<!--Botoes-->
-        <div class="form-group">           
-               <a class="btn" href="{{url('/entregador')}}"> Voltar </a> 
-        </div>
+        <br>
 
-        <div class="form-group">           
-               <form method = "POST"  action="{{url('/entregador/edit')}}"  style="display:inline">
+        <div class="form-group">  
+                <a class="btn btn-primary" href="{{url('/entregador')}}" title="Voltar"><i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i></a>            
+               <form method = "POST"  action="{{url('/entregador_edit')}}"  style="display:inline">
                 {{ csrf_field() }}
                 <input type="hidden" name="entregador" value="{{$entregador->id}}">
-                <input class="confirm" type="submit" value="Alterar" />
+                <button class="btn btn-primary" class="confirm" type="submit" title="Alterar"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
             </form> 
         </div>
 </div>
 @endsection
+</div>
+</div>
+</div>
+</div>

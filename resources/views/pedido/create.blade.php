@@ -2,9 +2,13 @@
 
 @section('content')
 <div class="container">
-<h2>Pedido</h2>
-<br><br>
-    <form class="form-inline" role="form" method="post" id="auto" action="/pedido/criado" >
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-danger">
+        <div class="panel-heading">CADASTRAR PEDIDO</div>
+        <!--Um novo painel-->
+         <div class="panel-body">
+    <form class="form-inline" role="form" method="post" id="auto" action="/pedido_criado" >
     {{ csrf_field() }}
         <!--Dados a serem inseridos-->
         @if(isset($cliente->id))
@@ -34,15 +38,16 @@
                 </span>
             @endif
         </div>
-<br><br><br><br>
+<br><br><br>
+        <h4>Lista de Produtos Disponíveis</h4>
         <div class="form-group">
         <table class="table">
             <header>
-                <th>Selecione</th>
-                <th>Nome</th>
-                <th>Tamanho</th>
-                <th>Valor</th>
-                <th>Descrição</th>
+                <th class="danger">Selecione</th>
+                <th class="danger">Nome</th>
+                <th class="danger">Tamanho</th>
+                <th class="danger">Valor</th>
+                <th class="danger">Descrição</th>
             </header>
             <tbody>
             @foreach($produtos as $produto)
@@ -59,15 +64,18 @@
         </table>
            
         </div> 
-<br><br>
+<br>
         <!--Botoes-->
         <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <input class="btn btn-primary" type="submit" value="Registrar">
-            </div>
+                <button class="btn btn-primary" type="submit" value="">Fazer Pedido</button>
+            
         </div>        
     </form>
 
     
 </div>
 @endsection
+</div>
+</div>
+</div>
+</div>
